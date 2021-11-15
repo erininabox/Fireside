@@ -5,15 +5,9 @@ import userService from '../../utils/userService';
 
 
 export default function LoginPage(props){
-    
+
 
     return (
-      
-            <div id="mydiv">
-                <h1>setup Login PAGE</h1>
-             </div>
-    
-      
+             <h1>Login PAGE</h1>
       );
 }
-
