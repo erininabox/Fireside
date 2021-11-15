@@ -5,14 +5,13 @@ import userService from '../../utils/userService';
 
 
 export default function LoginPage(props){
-    
+
 
     return (
-      
-          
-             <h1>setup Login PAGE</h1>
-    
-      
+
+
+             <h1>Login PAGE</h1>
+
+
       );
 }
-
