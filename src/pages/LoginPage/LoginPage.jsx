@@ -9,8 +9,9 @@ export default function LoginPage(props){
 
     return (
       
-          
-             <h1>setup Login PAGE</h1>
+            <div id="mydiv">
+                <h1>setup Login PAGE</h1>
+             </div>
     
       
       );
