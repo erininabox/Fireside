@@ -2,12 +2,12 @@
 @import "../../sass/colors";
 
 .marker {
-  width: $marker-width;
+  width: 40px;
   height: $marker-height;
   background-color: $color-border;
   margin-top: 30px;
 }
 
 .marker-active {
-  background-color: $color-primary;
+  background-color: $color-secondary;
 }
