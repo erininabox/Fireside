@@ -4,6 +4,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
 import FirstPage from '../../components/FirstPage/FirstPage'
+import PageMarker from '../../components/PageMarker/PageMaker';
 
 
 export default function SignUpPage(props){
@@ -45,11 +46,23 @@ export default function SignUpPage(props){
       setError(err.message)
     }
 
+    
   }
-    return (
+
+  function goToNextPage() {
+    setStage(prev => prev + 1);
+  }
+  
+  return (
         <div id="form-container" >
+        <PageMarker page={stage} />
             {
-                stage === 0 ? <FirstPage /> : ''
+                stage === 0 ? <FirstPage goToNextPage={goToNextPage} /> : 
+                stage === 1 ? <FirstPage goToNextPage={goToNextPage} /> :
+                stage === 2 ? <FirstPage goToNextPage={goToNextPage}/> :
+                stage === 3 ? <FirstPage goToNextPage={goToNextPage} /> :
+                stage === 4 ? <FirstPage goToNextPage={goToNextPage} /> :
+                <FirstPage goToNextPage={goToNextPage} /> 
             }
         </div>
         
