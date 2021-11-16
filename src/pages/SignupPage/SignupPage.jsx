@@ -19,7 +19,8 @@ export default function SignUpPage(props){
         email: '',
         password: '',
         age: null,
-        ageRanges: []
+        ageRanges: [],
+        selfDescriptions: []
       });
 
         const history = useHistory();

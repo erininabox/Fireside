@@ -18,12 +18,14 @@ export default function FifthPage({ goToNextPage }){
 
     const [selfDescriptions, setSelfDescriptions] = useState([]);
 
-    // Lift userage state and go to next page
+    // Lift array of just descriptions and go to next page
     function handleCustomClick () {
-        goToNextPage({ selfDescriptions: selfDescriptions });
+        let justDescriptions = selfDescriptions.map(d => d[0][0]);
+    
+        goToNextPage({ selfDescriptions: justDescriptions });
     }
 
-    function handleAddRangeClick (e) {
+    function handleAddDescriptionClick (e) {
         let temp = descriptionOptions.filter(option => {
             return option[0] === e.target.innerText;
         })
@@ -32,7 +34,7 @@ export default function FifthPage({ goToNextPage }){
         setSelfDescriptions(temp2);
     }
 
-    function handleRemoveRangeClick (e) {
+    function handleRemoveDescriptionClick (e) {
         let temp;
 
         temp = selfDescriptions.filter(selfD => {
@@ -43,11 +45,11 @@ export default function FifthPage({ goToNextPage }){
     }
 
     function checkIfSelected(description) {
-        let allSD = JSON.stringify(descriptionOptions);
+        let allSD = JSON.stringify(selfDescriptions);
         let thisSD = JSON.stringify(description);
         let index = allSD.indexOf(thisSD);
 
-        if (index != -1) {
+        if (index !== -1) {
             return true;
         }
         return false;
@@ -62,11 +64,13 @@ export default function FifthPage({ goToNextPage }){
                     descriptionOptions.map((option, index) => {
                         return (
                             checkIfSelected(option) 
-                                ? <div key={index} className="self-description selected-self-description" onClick={handleRemoveRangeClick}>
-                                    <object data={option[1]} width={100} height={100}></object>
+                                ? <div key={index} className="self-description selected-self-description" onClick={handleRemoveDescriptionClick}>
+                                    <img src={'icons/' + option[1]} width={45} height={45} alt="Some icon"/>
+                                    <p>{option[0]}</p>
                                 </div>
-                                : <div key={index} className="self-description" onClick={handleAddRangeClick}>
-                                    <object data={option[1]} width={100} height={100}></object>
+                                : <div key={index} className="self-description" onClick={handleAddDescriptionClick}>
+                                    <img src={'icons/' + option[1]} width={45} height={45} alt="Some icon" />
+                                    <p>{option[0]}</p>
                                 </div>
                         )
                     })

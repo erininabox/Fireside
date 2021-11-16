@@ -18,7 +18,7 @@ export default function ThirdPage({ goToNextPage }){
 
     const [ageRanges, setAgeRanges] = useState([]);
 
-    // Lift userage state and go to next page
+    // Lift array of ageRanges and go to next page
     function handleCustomClick () {
         console.log(ageRanges)
         goToNextPage({ ageRanges: ageRanges });
@@ -48,7 +48,7 @@ export default function ThirdPage({ goToNextPage }){
         let thisRange = JSON.stringify(range);
         let index = allRanges.indexOf(thisRange);
         console.log(index)
-        if (index != -1) {
+        if (index !== -1) {
             return true;
         }
         return false;
