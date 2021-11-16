@@ -1,0 +1,42 @@
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+@import "../../sass/fonts";
+
+#fifthpage-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: $padding-small;
+
+  h1 {
+    font-family: $font-primary;
+    font-size: $font-medium;
+  }
+}
+
+#self-description-picker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 15px;
+}
+
+.self-description {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  background-color: $color-primary-alpha;
+  border-radius: 50%;
+  font-size: $font-medium;
+  border: 2px solid transparent;
+}
+
+.selected-self-description {
+  border: 2px solid black;
+}
