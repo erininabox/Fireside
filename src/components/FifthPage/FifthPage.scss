@@ -35,6 +35,24 @@
   border-radius: 50%;
   font-size: $font-medium;
   border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  p {
+    width: 100px;
+    height: $font-small;
+    line-height: $font-small;
+    font-size: $font-tiny;
+    margin-bottom: 12px;
+    pointer-events: none;
+  }
+
+  img {
+    pointer-events: none;
+  }
 }
 
 .selected-self-description {
