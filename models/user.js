@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { TRUE } = require('node-sass');
 
 const SALT_ROUNDS = 6;
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, lowercase: true, unique: true},
   email: {type: String, required: true, lowercase: true, unique: true},
-  password: String,
-  photoUrl: String  // string from aws!
+  password: {type: String, required:true},
+  age: {type: Number, required:true},
+  photoUrl:{type: String, required: false}  // string from aws!
 }, {
   timestamps: true
 });
