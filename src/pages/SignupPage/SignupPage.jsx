@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-// import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
 import FirstPage from '../../components/FirstPage/FirstPage';
 import SecondPage from '../../components/SecondPage/SecondPage';
 import ThirdPage from '../../components/ThirdPage/ThirdPage';
+import FifthPage from '../../components/FifthPage/FifthPage';
 import PageMarker from '../../components/PageMarker/PageMaker';
 import './SignupPage.scss';
 
@@ -63,7 +63,7 @@ export default function SignUpPage(props){
               stage === 1 ? <SecondPage goToNextPage={goToNextPage} /> :
               stage === 2 ? <ThirdPage goToNextPage={goToNextPage}/> :
               stage === 3 ? <FirstPage goToNextPage={goToNextPage} /> :
-              stage === 4 ? <FirstPage goToNextPage={goToNextPage} /> :
+              stage === 4 ? <FifthPage goToNextPage={goToNextPage} /> :
               <FirstPage goToNextPage={goToNextPage} /> 
           }
         </div>
