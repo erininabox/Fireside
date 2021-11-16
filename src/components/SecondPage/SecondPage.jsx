@@ -32,8 +32,8 @@ export default function SecondPage({ goToNextPage }){
                 {
                     ages.map(age => {
                         return (
-                            age == userAge ? <div className="age-choice selected-age">{age}</div>
-                                : <div className="age-choice" onClick={handleAgeClick}>{age}</div>
+                            age == userAge ? <div key={age} className="age-choice selected-age">{age}</div>
+                                : <div key={age} className="age-choice" onClick={handleAgeClick}>{age}</div>
                         )
                     })
                 }

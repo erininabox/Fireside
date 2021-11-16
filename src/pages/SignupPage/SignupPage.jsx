@@ -5,6 +5,7 @@ import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
 import FirstPage from '../../components/FirstPage/FirstPage';
 import SecondPage from '../../components/SecondPage/SecondPage';
+import ThirdPage from '../../components/ThirdPage/ThirdPage';
 import PageMarker from '../../components/PageMarker/PageMaker';
 import './SignupPage.scss';
 
@@ -17,9 +18,8 @@ export default function SignUpPage(props){
         username: '',
         email: '',
         password: '',
-        passwordConf: '',
         age: null,
-        photo: '',
+        ageRanges: []
       });
 
         const history = useHistory();
@@ -61,7 +61,7 @@ export default function SignUpPage(props){
           {
               stage === 0 ? <FirstPage goToNextPage={goToNextPage} /> : 
               stage === 1 ? <SecondPage goToNextPage={goToNextPage} /> :
-              stage === 2 ? <FirstPage goToNextPage={goToNextPage}/> :
+              stage === 2 ? <ThirdPage goToNextPage={goToNextPage}/> :
               stage === 3 ? <FirstPage goToNextPage={goToNextPage} /> :
               stage === 4 ? <FirstPage goToNextPage={goToNextPage} /> :
               <FirstPage goToNextPage={goToNextPage} /> 
