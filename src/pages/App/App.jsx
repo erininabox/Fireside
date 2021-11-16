@@ -4,6 +4,7 @@ import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
+import HomePage from '../HomePage/HomePage';
 
 
 function App() {
@@ -30,12 +31,12 @@ function App() {
           <Route exact path="/signup">
              <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
+          <Route exact path="/">
+              <HomePage></HomePage>
+          </Route>
           {userService.getUser() ? 
             <> 
              <Switch>
-                <Route exact path="/">
-                    Home PAGE COMPONENT WOULD GO HEREE
-                </Route>
             </Switch>
             </>
             :
