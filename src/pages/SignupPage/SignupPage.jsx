@@ -3,8 +3,10 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 // import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
-import FirstPage from '../../components/FirstPage/FirstPage'
+import FirstPage from '../../components/FirstPage/FirstPage';
+import SecondPage from '../../components/SecondPage/SecondPage';
 import PageMarker from '../../components/PageMarker/PageMaker';
+import './SignupPage.scss';
 
 
 export default function SignUpPage(props){
@@ -16,18 +18,13 @@ export default function SignUpPage(props){
         email: '',
         password: '',
         passwordConf: '',
-        age:null,
-        photo:'',
+        age: null,
+        photo: '',
       });
 
         const history = useHistory();
 
-        function handleChange(e){
-            setState({
-             ...state,
-            [e.target.name]: e.target.value
-            })
-       }
+  
 
         async function handleSubmit(e){
             e.preventDefault();
@@ -49,21 +46,26 @@ export default function SignUpPage(props){
     
   }
 
-  function goToNextPage() {
+  function goToNextPage(data) {
+    setState({
+      ...state,
+      ...data
+    })
     setStage(prev => prev + 1);
   }
+  console.log(state)
   
   return (
         <div id="form-container" >
-        <PageMarker page={stage} />
-            {
-                stage === 0 ? <FirstPage goToNextPage={goToNextPage} /> : 
-                stage === 1 ? <FirstPage goToNextPage={goToNextPage} /> :
-                stage === 2 ? <FirstPage goToNextPage={goToNextPage}/> :
-                stage === 3 ? <FirstPage goToNextPage={goToNextPage} /> :
-                stage === 4 ? <FirstPage goToNextPage={goToNextPage} /> :
-                <FirstPage goToNextPage={goToNextPage} /> 
-            }
+          <PageMarker page={stage} />
+          {
+              stage === 0 ? <FirstPage goToNextPage={goToNextPage} /> : 
+              stage === 1 ? <SecondPage goToNextPage={goToNextPage} /> :
+              stage === 2 ? <FirstPage goToNextPage={goToNextPage}/> :
+              stage === 3 ? <FirstPage goToNextPage={goToNextPage} /> :
+              stage === 4 ? <FirstPage goToNextPage={goToNextPage} /> :
+              <FirstPage goToNextPage={goToNextPage} /> 
+          }
         </div>
         
         );

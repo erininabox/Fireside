@@ -1,0 +1,17 @@
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+@import "../../sass/fonts";
+
+.custombutton-container {
+  background-color: $color-primary;
+  padding: 0 50px;
+  line-height: 60px;
+  height: 60px;
+  font-size: $font-medium;
+  font-family: $font-primary;
+  font-weight: $font-weight-medium;
+  border: none;
+  border-radius: 30px;
+  margin-top: 30px;
+  cursor: pointer;
+}
