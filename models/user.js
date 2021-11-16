@@ -5,11 +5,13 @@ const { TRUE } = require('node-sass');
 const SALT_ROUNDS = 6;
 
 const userSchema = new mongoose.Schema({
-  username: {type: String, required: true, lowercase: true, unique: true},
-  email: {type: String, required: true, lowercase: true, unique: true},
-  password: {type: String, required:true},
-  age: {type: Number, required:true},
-  photoUrl:{type: String, required: false}  // string from aws!
+  username:   {type: String, required: true, lowercase: true, unique: true},
+  email:      {type: String, required: true, lowercase: true, unique: true},
+  password:   {type: String, required: true},   // need to implement in UI
+  age:        {type: String, required: true},
+  ageRanges:  [],
+  description:[],
+  photoUrl:   {type: String, required: false}   // delete?
 }, {
   timestamps: true
 });
@@ -32,12 +34,12 @@ userSchema.set('toObject', {
 });
 
 
-// DO NOT DEFINE instance methods with arrow functions, 
+// DO NOT DEFINE instance methods with arrow functions,
 // they prevent the binding of this
 userSchema.pre('save', function(next) {
   // 'this' will be set to the current document
   const user = this;
-  // check to see if the user has been modified, if not proceed 
+  // check to see if the user has been modified, if not proceed
   // in the middleware chain
   if (!user.isModified('password')) return next();
   // password has been changed - salt and hash it
