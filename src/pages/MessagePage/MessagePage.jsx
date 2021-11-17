@@ -7,7 +7,9 @@ import userService from '../../utils/userService';
 export default function MessagePage ({ user }) {
 
     const [message, setMessage] = useState('');
-    const [otherUser, setOtherUser] = useState(null);
+    const [otherUser, setOtherUser] = useState({ 
+        username: 'user'
+    });
 
     function handleMessageChange (e) {
         setMessage(e.target.value);
@@ -21,8 +23,7 @@ export default function MessagePage ({ user }) {
     async function getOtherUser () {
         try {
             let other = await userService.getOne(user.match)
-            setOtherUser(other);
-            console.log(other)
+            setOtherUser(other.user[0]);
         } catch (err) {
             console.log(err)
         }
@@ -34,7 +35,7 @@ export default function MessagePage ({ user }) {
 
     return (
         <div id="messagepage-container">
-            <h1>{`Connect with *user`}</h1>
+            <h1>{`Connect with ${otherUser.username}`}</h1>
             <label htmlFor="message">Type a Message for them.</label>
             <textarea name="message" value={message} onChange={handleMessageChange} rows="15" cols="43"></textarea>
             <CustomButton handleCustomClick={handleMessageSubmit}>Send</CustomButton>
