@@ -3,7 +3,7 @@ const express = require('express');
 var cors = require('cors')
 const path = require('path');
 const logger = require('morgan');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const { signup, login } = require('./controllers/auth');
 require('./config/database');
 
@@ -16,7 +16,7 @@ app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build'))); // this allows express to find the build folder
 // Configure the auth middleware
 // This decodes the jwt token, and assigns
