@@ -22,7 +22,7 @@ export default function FifthPage({ goToNextPage }){
     function handleCustomClick () {
         let justDescriptions = selfDescriptions.map(d => d[0][0]);
     
-        goToNextPage({ selfDescriptions: justDescriptions });
+        goToNextPage({ description: justDescriptions });
     }
 
     function handleAddDescriptionClick (e) {
