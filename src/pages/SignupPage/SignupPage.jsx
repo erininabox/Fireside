@@ -42,11 +42,11 @@ const dummyMatches = [
     description: ["Caring", "Curious", "Adventurous"],
     whatToOffer: ["Life Advice", "Stories", "Pop Culture"]
   },
-  
+
 ]
 
 export default function SignUpPage(props){
-    
+
   const pageCount = 6;
   const [stage, setStage] = useState(0);
   const [matches, setMatches] = useState([]);
@@ -69,7 +69,7 @@ export default function SignUpPage(props){
     try {
       await userService.signup(state);
       props.handleSignUpOrLogin()
-      history.push('/messaging') 
+      history.push('/messaging')
     } catch(err){
       console.log(err.message)
       setError(err.message)
@@ -88,7 +88,7 @@ export default function SignUpPage(props){
   // Go through the array of matches
   function skipUser () {
     // if (matchIndex < dummyMatches.length - 1) {
-    if (matchIndex < matches.users.length - 1) {
+    if (matchIndex < matches.length - 1) {
       setMatchIndex(prev => prev + 1);
     } else {
       setMatchIndex(0);
@@ -102,9 +102,10 @@ export default function SignUpPage(props){
       setMatches(allUsers);
     } catch (error) {
       console.log(error)
+      setMatches(dummyMatches)
     }
   }
-  
+
   useEffect(() => {
     if (stage === pageCount)
       handleSubmit();
@@ -113,24 +114,24 @@ export default function SignUpPage(props){
   useEffect(() => {
     getAllUsers();
   }, [])
-  
+
   console.log(matches)
   return (
     <div id="form-container" >
       <PageMarker page={stage} />
       {
-          stage === 0 ? <FirstPage goToNextPage={goToNextPage} /> : 
+          stage === 0 ? <FirstPage goToNextPage={goToNextPage} /> :
           stage === 1 ? <SecondPage goToNextPage={goToNextPage} /> :
           stage === 2 ? <ThirdPage goToNextPage={goToNextPage}/> :
           stage === 3 ? <FourthPage goToNextPage={goToNextPage} /> :
           stage === 4 ? <FifthPage goToNextPage={goToNextPage} /> :
-          
-          <MatchSelection 
-            goToNextPage={goToNextPage} 
-            skipUser={skipUser} 
+
+          <MatchSelection
+            goToNextPage={goToNextPage}
+            skipUser={skipUser}
             // match={ dummyMatches[matchIndex]}
-            match={ matches.users.length ? matches.users[matchIndex] : dummyMatches[matchIndex]} 
-            /> 
+            match={ matches.length != 0 ? matches[matchIndex] : dummyMatches[matchIndex]}
+            />
       }
     </div>
   );
