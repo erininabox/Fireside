@@ -13,6 +13,16 @@
   font-family: $font-primary;
   padding: $padding-small;
 
+  div {
+    display: flex;
+    justify-content: center;
+  }
+
+  #flipped {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
   h2 {
     font-size: $font-big;
     font-weight: $font-weight-heavy;
@@ -26,7 +36,7 @@
   }
 
   img {
-    width: 300px;
+    width: 170px;
     height: 300px;
   }
 }
