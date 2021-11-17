@@ -34,7 +34,7 @@ export default function LoginPage(props){
     }
 
     return (
-        <div>
+        <div id="login-container">
             <h1>Login PAGE</h1>
             <div className="auth-body">
                 <div className="form-container" onSubmit={handleSubmit}>

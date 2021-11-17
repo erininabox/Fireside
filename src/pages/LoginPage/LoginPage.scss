@@ -1,0 +1,23 @@
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+@import "../../sass/fonts";
+
+#login-container {
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    color: #FBF6F0;
+    font-family: "Proza Libre";
+    font-size: $font-giant;
+    line-height: 5rem;
+}
+
+#form-container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    margin: 0 auto;
+  }
+  
