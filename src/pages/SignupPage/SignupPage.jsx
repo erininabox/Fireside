@@ -42,13 +42,7 @@ const dummyMatches = [
     description: ["Caring", "Curious", "Adventurous"],
     whatToOffer: ["Life Advice", "Stories", "Pop Culture"]
   },
-  {
-    username: 'Shyguy',
-    email: 'email@gmail.com',
-    age: 54,
-    description: ["Caring", "Curious", "Adventurous"],
-    whatToOffer: ["Life Advice", "Stories", "Pop Culture"]
-  }
+  
 ]
 
 export default function SignUpPage(props){
@@ -93,7 +87,7 @@ export default function SignUpPage(props){
 
   // Go through the array of matches
   function skipUser () {
-    //if (matchIndex < dummyMatches.length - 1) {
+    // if (matchIndex < dummyMatches.length - 1) {
     if (matchIndex < matches.users.length - 1) {
       setMatchIndex(prev => prev + 1);
     } else {
@@ -120,7 +114,7 @@ export default function SignUpPage(props){
     getAllUsers();
   }, [])
   
-
+  console.log(matches)
   return (
     <div id="form-container" >
       <PageMarker page={stage} />
@@ -133,7 +127,9 @@ export default function SignUpPage(props){
           <MatchSelection 
             goToNextPage={goToNextPage} 
             skipUser={skipUser} 
-            match={ matches.users.length ? matches.users[matchIndex] : dummyMatches[matchIndex]} /> 
+            // match={ dummyMatches[matchIndex]}
+            match={ matches.users.length ? matches.users[matchIndex] : dummyMatches[matchIndex]} 
+            /> 
       }
     </div>
   );

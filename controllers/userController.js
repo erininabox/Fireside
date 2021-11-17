@@ -18,6 +18,7 @@ function createJWT(user) {
 }
 
 async function signup (req, res) {
+  console.log("--------->>>>>>>>")
   let dummy = {
     username: req.body.username,
     email: req.body.email,
@@ -61,7 +62,13 @@ async function getAll(req, res) {
   try {
     const users = await User.find({});
     if (!users) {
-      res.status(200).json({ users: [] });
+      res.status(200).json({ users: [{
+        username: 'Shyguy',
+        email: 'email@gmail.com',
+        age: 54,
+        description: ["Caring", "Curious", "Adventurous"],
+        whatToOffer: ["Life Advice", "Stories", "Pop Culture"]
+      }] });
     }
     res.status(200).json({ users });
   } catch (err) {
