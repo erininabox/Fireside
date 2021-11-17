@@ -7,10 +7,11 @@ const SALT_ROUNDS = 6;
 const userSchema = new mongoose.Schema({
   username:   {type: String, required: true, lowercase: true, unique: true},
   email:      {type: String, required: true, lowercase: true, unique: true},
-  password:   {type: String, required: true},   // need to implement in UI
+  password:   {type: String, required: true},
   age:        {type: String, required: true},
-  ageRanges:  [],
-  description:[],
+  ageRanges:  {type: [String], required: true},
+  description:{type: [String], required: true},
+  whatToOffer:{type: [String], required: true},
   photoUrl:   {type: String, required: false}   // delete?
 }, {
   timestamps: true
