@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,7 @@ import './SignupPage.scss';
 
 
 // Dummy data for testing the matches display
-const matches = [
+const dummyMatches = [
   {
     username: 'Mario',
     email: 'email@gmail.com',
@@ -53,41 +53,33 @@ const matches = [
 
 export default function SignUpPage(props){
     
-    const [stage, setStage] = useState(0);
-    const [matchIndex, setMatchIndex] = useState(0);
-    const [error, setError ] = useState('');
-    const [state, setState]  = useState({
-        username: '',
-        email: '',
-        password: '',
-        age: null,
-        ageRanges: [],
-        description: [],
-        whatToOffer: []
-      });
+  const pageCount = 6;
+  const [stage, setStage] = useState(0);
+  const [matches, setMatches] = useState([]);
+  const [matchIndex, setMatchIndex] = useState(0);
+  const [error, setError ] = useState('');
+  const [state, setState]  = useState({
+      username: '',
+      email: '',
+      password: '',
+      age: null,
+      ageRanges: [],
+      description: [],
+      whatToOffer: [],
+      match: ''
+    });
 
-        const history = useHistory();
+  const history = useHistory();
 
-  
-
-        async function handleSubmit(e){
-            e.preventDefault();
-
-        try {
-            await userService.signup(state);
-      // setTheUser in our app
-            props.handleSignUpOrLogin() // gets the token from localstorage and updates the user state in our app.js
-      // with the correct user object from the current token
-      // then route to the homepage
-            history.push('/') // defined above from react-router-dom
-      // after this we can go whereever
-
+  async function handleSubmit(){
+    try {
+      await userService.signup(state);
+      props.handleSignUpOrLogin()
+      history.push('/messaging') 
     } catch(err){
       console.log(err.message)
       setError(err.message)
     }
-
-    
   }
 
   function goToNextPage(data) {
@@ -97,10 +89,6 @@ export default function SignUpPage(props){
     })
     setStage(prev => prev + 1);
   }
-  
-  function selectUser (selectedUser) {
-    console.log(selectedUser)
-  }
 
   function skipUser () {
     if (matchIndex < matches.length - 1) {
@@ -109,7 +97,26 @@ export default function SignUpPage(props){
       setMatchIndex(0);
     }
   }
+
+  async function getAllUsers () {
+    try {
+      let allUsers = await userService.getAll();
+      setMatches(allUsers);
+    } catch (error) {
+      console.log(error)
+    }
+  }
   
+  useEffect(() => {
+    if (stage === pageCount)
+      handleSubmit();
+  }, [stage])
+
+  useEffect(() => {
+    getAllUsers();
+  }, [])
+  
+
   return (
     <div id="form-container" >
       <PageMarker page={stage} />
@@ -119,7 +126,10 @@ export default function SignUpPage(props){
           stage === 2 ? <ThirdPage goToNextPage={goToNextPage}/> :
           stage === 3 ? <FourthPage goToNextPage={goToNextPage} /> :
           stage === 4 ? <FifthPage goToNextPage={goToNextPage} /> :
-          <MatchSelection selectUser={selectUser} skipUser={skipUser} match={matches[matchIndex]} /> 
+          <MatchSelection 
+            goToNextPage={goToNextPage} 
+            skipUser={skipUser} 
+            match={ matches.users ? matches.users[matchIndex] : dummyMatches[matchIndex]} /> 
       }
     </div>
   );

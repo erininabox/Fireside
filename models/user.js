@@ -1,18 +1,23 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const { TRUE } = require('node-sass');
 
 const SALT_ROUNDS = 6;
 
+const rangeSchema = new mongoose.Schema({
+  range: String,
+  low: Number,
+  hight: Number
+})
+
 const userSchema = new mongoose.Schema({
-  username:   {type: String, required: true, lowercase: true, unique: true},
-  email:      {type: String, required: true, lowercase: true, unique: true},
+  username:   {type: String, required: true, unique: true},
+  email:      {type: String, required: true, unique: true},
   password:   {type: String, required: true},
-  age:        {type: String, required: true},
-  ageRanges:  {type: [String], required: true},
-  description:{type: [String], required: true},
-  whatToOffer:{type: [String], required: true},
-  photoUrl:   {type: String, required: false}   // delete?
+  age:        {type: Number, required: true},
+  ageRanges:  [rangeSchema],
+  description:[String],
+  whatToOffer:[String],
+  match:      String
 }, {
   timestamps: true
 });

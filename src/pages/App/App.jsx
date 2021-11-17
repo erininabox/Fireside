@@ -6,6 +6,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
 import HomePage from '../HomePage/HomePage';
 import OnBoardingPage from '../OnBoardingPage/OnBoardingPage';
+import MessagePage from '../MessagePage/MessagePage';
 import MemberPage from '../MemberPage/MemberPage';  /// debugging /////////////////////////////////////////
 
 function App() {
@@ -39,16 +40,18 @@ function App() {
              <OnBoardingPage />
           </Route>
           <Route exact path="/">
-              <HomePage></HomePage>
+              <HomePage />
           </Route>
-          {userService.getUser() ?
-            <>
-             <Switch>
+          { user  ?
+            <Switch>
+              <Route exact path="/messaging">
+                <MessagePage user={user} />
+              </Route>
             </Switch>
-            </>
             :
             <Redirect to='/login'/>
           }
+          
 
       </Switch>
     </div>

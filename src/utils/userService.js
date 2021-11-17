@@ -8,12 +8,15 @@ const BASE_URL = '/api/users/';
 function signup(user) {
   return fetch(BASE_URL + 'signup', {
     method: 'POST',
-    body: user
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
   .then(res => {
     if (res.ok) return res.json();
-    // Probably a duplicate email
-    throw new Error('Email already taken!');
+    // Probably a duplicate email ot username
+    throw new Error('Username or email already taken!');
   })
   // Parameter destructuring!
   .then(({token}) => tokenService.setToken(token));
@@ -45,10 +48,30 @@ function login(creds) {
   .then(({token}) => tokenService.setToken(token));
 }
 
+function getOne(username) {
+  return fetch(BASE_URL + username, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => res.json());
+};
+
+function getAll() {
+  return fetch(BASE_URL, {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => res.json());
+};
+
 
 export default {
   signup, 
   logout,
   login,
-  getUser
+  getUser,
+  getOne,
+  getAll
 };
