@@ -28,7 +28,7 @@ app.use(require('./config/auth'));
 app.post('/api/signup', signup);
 app.post('/api/login', login);
 app.use('/api/signup', require('./controllers/userController'));
-
+app.use('/api/members', require('./controllers/memberController'));
 
 // "catch all" route
 app.get('/*', function(req, res) {

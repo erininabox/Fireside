@@ -6,12 +6,12 @@ import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
 import HomePage from '../HomePage/HomePage';
 import OnBoardingPage from '../OnBoardingPage/OnBoardingPage';
-
+import MemberPage from '../MemberPage/MemberPage';  /// debugging /////////////////////////////////////////
 
 function App() {
 
   const [user, setUser] = useState(userService.getUser()) // getUser decodes our JWT token, into a javascript object
-  // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like 
+  // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
   function handleSignUpOrLogin(){
@@ -26,6 +26,9 @@ function App() {
   return (
     <div className="App">
       <Switch>
+          <Route exact path="/members">
+             <MemberPage handleSignUpOrLogin={handleSignUpOrLogin}/>
+          </Route>
           <Route exact path="/login">
              <LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
@@ -38,15 +41,15 @@ function App() {
           <Route exact path="/">
               <HomePage></HomePage>
           </Route>
-          {userService.getUser() ? 
-            <> 
+          {userService.getUser() ?
+            <>
              <Switch>
             </Switch>
             </>
             :
             <Redirect to='/login'/>
           }
-  
+
       </Switch>
     </div>
   );
