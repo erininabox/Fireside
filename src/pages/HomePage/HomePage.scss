@@ -1,3 +1,7 @@
+@import "../../sass/colors";
+@import "../../sass/dimensions";
+@import "../../sass/fonts";
+
 .container {
     background-position: center;
     background-repeat: no-repeat;
@@ -18,6 +22,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
 }
 
 .btn{
@@ -47,17 +53,20 @@
 
 h1{
     color: #FBF6F0;
-    font-family: Proza Libre;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20vw;
-    line-height: 273px;
+    font-family: "Proza Libre";
+    font-size: $font-giant;
+    line-height: 5rem;
 }
 
 h3{
     color: #FBF6F0;
+    font-family: $font-primary;
+    font-size: $font-medium;
+    padding-bottom: 2vh;
 }
 
-
+.link {
+    text-decoration: none;
+}
 
 
