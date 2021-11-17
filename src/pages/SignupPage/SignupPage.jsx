@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import FirstPage from '../../components/FirstPage/FirstPage';
 import SecondPage from '../../components/SecondPage/SecondPage';
 import ThirdPage from '../../components/ThirdPage/ThirdPage';
+import FourthPage from '../../components/FourthPage/FourthPage';
 import FifthPage from '../../components/FifthPage/FifthPage';
 import PageMarker from '../../components/PageMarker/PageMaker';
 import './SignupPage.scss';
@@ -63,7 +64,7 @@ export default function SignUpPage(props){
               stage === 0 ? <FirstPage goToNextPage={goToNextPage} /> : 
               stage === 1 ? <SecondPage goToNextPage={goToNextPage} /> :
               stage === 2 ? <ThirdPage goToNextPage={goToNextPage}/> :
-              stage === 3 ? <FirstPage goToNextPage={goToNextPage} /> :
+              stage === 3 ? <FourthPage goToNextPage={goToNextPage} /> :
               stage === 4 ? <FifthPage goToNextPage={goToNextPage} /> :
               <FirstPage goToNextPage={goToNextPage} /> 
           }
