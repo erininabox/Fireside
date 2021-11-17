@@ -4,7 +4,9 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  getAll,
+  getOne
 }
 
 function createJWT(user) {
@@ -23,7 +25,8 @@ async function signup (req, res) {
     password: req.body.password,
     description: req.body.description,
     whatToOffer: req.body.whatToOffer,
-    ageRanges: req.body.ageRanges
+    ageRanges: req.body.ageRanges,
+    match: req.body.match
   }
   try {
     const user = await User.create(dummy);
@@ -37,8 +40,9 @@ async function signup (req, res) {
 async function login(req, res) {
   try {
     const user = await User.findOne({email: req.body.email});
+    console.log(user)
     if (!user) return res.status(401).json({err: 'bad credentials'});
-    // had to update the password from req.body.pw, to req.body password
+    
     user.comparePassword(req.body.password, (err, isMatch) => {
         
       if (isMatch) {
@@ -53,56 +57,20 @@ async function login(req, res) {
   }
 }
 
+async function getAll(req, res) {
+  try {
+    const users = await User.find({});
+    res.status(200).json({ users });
+  } catch (err) {
+    res.json({ data: err });
+  }
+};
 
-//const userRouter = require('express').Router();
-
-
-// create route in server.js -> controllers/auth
-
-// Read (Show)
-// userRouter.get('/', async (req, res) => {
-//   try {
-//     const foundUsers = await User.find({})
-//     res.status(200).json(foundUsers)
-//   } catch(error) {
-//     console.error(error)
-//     res.status(404).json({message: error.message})
-//   }
-// });
-
-// Read (Index)
-// userRouter.get('/:id', async (req, res) => {
-//   try {
-//     const foundUser = await User.findById(req.params.id)
-//     res.status(200).json(foundUser)
-//   } catch(error) {
-//     console.error(error)
-//   res.status(400).json({message: error.message})
-//   }
-// });
-
-// Update
-// userRouter.put('/:id', async (req, res) => {
-//   try{
-//     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
-//     res.status(200).json(updatedUser)
-//   } catch(error){
-//     console.error(error)
-//     res.status(400).json({message: error.message})
-//   }
-// });
-
-// Delete
-// userRouter.delete('/:id', async(req, res) => {
-//   try {
-//     const deletedUser = await User.findByIdAndDelete(req.params.id)
-//     res.status(200).json(deletedUser)
-//   } catch (error) {
-//     console.error(error)
-//     res.status(400).json({
-//       message: error.message
-//     })
-//   }
-// });
-
-// module.exports = userRouter;
+async function getOne(req, res) {
+    try {
+      const user = await User.find({ username: req.params.id });
+      res.status(200).json({ user });
+    } catch (err) {
+      res.json({ data: err });
+    }
+};

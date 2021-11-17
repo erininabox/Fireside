@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
   age:        {type: Number, required: true},
   ageRanges:  [rangeSchema],
   description:[String],
-  whatToOffer:[String]
+  whatToOffer:[String],
+  match:      String
 }, {
   timestamps: true
 });
