@@ -22,7 +22,7 @@ export default function FourthPage({ goToNextPage }){
     function handleCustomClick () {
         let justOptions = offerOptions.map(d => d[0][0]);
     
-        goToNextPage({ offerOptions: justOptions });
+        goToNextPage({ whatToOffer: justOptions });
     }
 
     function handleAddOfferClick (e) {
