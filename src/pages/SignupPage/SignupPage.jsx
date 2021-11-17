@@ -82,6 +82,7 @@ export default function SignUpPage(props){
     }
   }
 
+  // Lift state from page component and increment page index
   function goToNextPage(data) {
     setState({
       ...state,
@@ -90,14 +91,17 @@ export default function SignUpPage(props){
     setStage(prev => prev + 1);
   }
 
+  // Go through the array of matches
   function skipUser () {
-    if (matchIndex < matches.length - 1) {
+    //if (matchIndex < dummyMatches.length - 1) {
+    if (matchIndex < matches.users.length - 1) {
       setMatchIndex(prev => prev + 1);
     } else {
       setMatchIndex(0);
     }
   }
 
+  // Retrieve all the users "that match"
   async function getAllUsers () {
     try {
       let allUsers = await userService.getAll();
@@ -129,7 +133,7 @@ export default function SignUpPage(props){
           <MatchSelection 
             goToNextPage={goToNextPage} 
             skipUser={skipUser} 
-            match={ matches.users.length ? matches.users[matchIndex] : dummyMatches} /> 
+            match={ matches.users.length ? matches.users[matchIndex] : dummyMatches[matchIndex]} /> 
       }
     </div>
   );

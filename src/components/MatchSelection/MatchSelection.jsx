@@ -5,7 +5,6 @@ import CustomButton from '../CustomButton/CustomButton';
 
 export default function MatchSelection ({ goToNextPage, skipUser, match }) {
 
-    console.log(match)
     function formatInfo (arr) {
         let output = '';
         if (arr.length > 2) {
