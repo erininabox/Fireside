@@ -8,7 +8,7 @@ export default function OnBoarding3 ({ handleNextClick }) {
     return (
         <div id="onpage3-container">
             <div>
-                <img src={'images/GuyInPhone.svg'} alt="A man looking at a woman in a ridiculously large phone" />
+                <img src={'images/GuyinPhone.svg'} alt="A man looking at a woman in a ridiculously large phone" />
                 <img id="flipped" src={'images/GirlInPhone.svg'} alt="A woman looking at a man in a ridiculously large phone" />
             </div>
             <h2>Share Your Stories</h2>
