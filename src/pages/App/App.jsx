@@ -15,7 +15,6 @@ function App() {
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
   function handleSignUpOrLogin(){
-    console.log(userService.getUser())
     setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
   }
 
@@ -40,7 +39,7 @@ function App() {
              <OnBoardingPage />
           </Route>
           <Route exact path="/">
-              <HomePage></HomePage>
+              <HomePage />
           </Route>
           {userService.getUser() ?
             <>

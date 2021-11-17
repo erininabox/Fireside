@@ -3,6 +3,7 @@ import './LoginPage.scss';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import userService from '../../utils/userService';
 import { useHistory } from "react-router-dom";
+import CustomButton from '../../components/CustomButton/CustomButton';
 
 
 export default function LoginPage(props){
@@ -18,16 +19,14 @@ export default function LoginPage(props){
         setError('');
     }
 
-    async function handleSubmit(evt) {
-        // Prevent form from being submitted to the server
-        evt.preventDefault();
+    async function handleSubmit() {
         try {
           // The promise returned by the signUp service method 
           // will resolve to the user object included in the
           // payload of the JSON Web Token (JWT)
           const user = await userService.login(credentials);
-          //setUser(user);
-          history.push("/home");
+          props.handleSignUpOrLogin();
+          history.push("/");
         } catch {
           setError('Log In Failed - Try Again');
         }
@@ -35,19 +34,17 @@ export default function LoginPage(props){
 
     return (
         <div id="login-container">
-            <h1>Login PAGE</h1>
-            <div className="auth-body">
-                <div className="form-container" onSubmit={handleSubmit}>
-                    <form autoComplete="off" className="form-elements">
+            <h1>Login Page</h1>
+            <div className="form-container">
+                <form autoComplete="off" className="form-elements">
                     <label>Email</label>
-                    <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
+                    <input type="text" name="email" value={credentials.email} onChange={handleChange} type="email" required />
                     <label>Password</label>
-                    <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-                    <button type="submit">LOG IN</button>
-                    </form>
-                </div>
-                <p className="error-message"><br/>{error}</p>
+                    <input type="password" name="password" value={credentials.password} onChange={handleChange} type="password" required />
+                </form>
             </div>
+            <CustomButton handleCustomClick={handleSubmit}>Login</CustomButton>
+            <p className="error-message"><br/>{error}</p>
         </div>
              
       );

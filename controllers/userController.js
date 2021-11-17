@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
 module.exports = {
-  signup
+  signup,
+  login
 }
 
 function createJWT(user) {
@@ -30,6 +31,25 @@ async function signup (req, res) {
     res.json({ token });
   } catch (err) {
     res.status(400).json(err);
+  }
+}
+
+async function login(req, res) {
+  try {
+    const user = await User.findOne({email: req.body.email});
+    if (!user) return res.status(401).json({err: 'bad credentials'});
+    // had to update the password from req.body.pw, to req.body password
+    user.comparePassword(req.body.password, (err, isMatch) => {
+        
+      if (isMatch) {
+        const token = createJWT(user);
+        res.json({token});
+      } else {
+        return res.status(401).json({err: 'bad credentials'});
+      }
+    });
+  } catch (err) {
+    return res.status(401).json(err);
   }
 }
 

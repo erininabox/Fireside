@@ -20,7 +20,6 @@ export default function ThirdPage({ goToNextPage }){
 
     // Lift array of ageRanges and go to next page
     function handleCustomClick () {
-        console.log(ageRanges)
         goToNextPage({ ageRanges: ageRanges[0] });
     }
 
@@ -47,7 +46,7 @@ export default function ThirdPage({ goToNextPage }){
         let allRanges = JSON.stringify(ageRanges);
         let thisRange = JSON.stringify(range);
         let index = allRanges.indexOf(thisRange);
-        console.log(index)
+        
         if (index !== -1) {
             return true;
         }
