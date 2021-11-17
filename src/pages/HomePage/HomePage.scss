@@ -3,70 +3,66 @@
 @import "../../sass/fonts";
 
 .container {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-    justify-content: center;
-    align-self: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  justify-content: center;
+  align-self: center;
 }
 
 .fuzz {
-    background-color: #CFB69633;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+  background-color: #cfb69633;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn{
-    background: #E8D2B1;
-    border: 1px solid #E5E5E5;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    border-radius: 100px;
-    width: 300px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 42px;
-    padding: 10px;
-    margin: 20px;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-
+.btn {
+  background: #e8d2b1;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-radius: 100px;
+  width: 300px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  padding: 10px;
+  margin: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
 }
 
-.btn-container{
-    margin-top: 4vmin;
+.btn-container {
+  margin-top: 4vmin;
 }
 
-h1{
-    color: #FBF6F0;
-    font-family: "Proza Libre";
-    font-size: $font-giant;
-    line-height: 5rem;
+.homepage-title {
+  color: #fbf6f0;
+  font-family: "Proza Libre";
+  font-size: $font-giant;
+  line-height: 5rem;
 }
 
-h3{
-    color: #FBF6F0;
-    font-family: $font-primary;
-    font-size: $font-medium;
-    padding-bottom: 2vh;
+.stupid-inspirational-quote {
+  color: #fbf6f0;
+  font-family: $font-primary;
+  font-size: $font-medium;
+  padding-bottom: 2vh;
 }
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
 }
-
-
