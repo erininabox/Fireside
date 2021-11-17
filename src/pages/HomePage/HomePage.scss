@@ -67,3 +67,9 @@
 .link {
   text-decoration: none;
 }
+
+@media (min-width: $break-medium) {
+  .homepage-title {
+    font-size: $font-titan;
+  }
+}

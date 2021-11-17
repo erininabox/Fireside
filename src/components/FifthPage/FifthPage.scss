@@ -41,6 +41,10 @@
   align-items: center;
   cursor: pointer;
 
+  &:hover {
+    opacity: 0.8;
+  }
+
   p {
     width: 100px;
     height: $font-small;
@@ -57,4 +61,18 @@
 
 .selected-self-description {
   border: 2px solid black;
+}
+
+@media (min-width: $break-medium) {
+  #self-description-picker {
+    width: 700px;
+  }
+  .self-description {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    p {
+      font-size: $font-small;
+    }
+  }
 }

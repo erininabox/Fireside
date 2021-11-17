@@ -14,4 +14,8 @@
   border-radius: 30px;
   margin-top: 30px;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }

@@ -35,8 +35,22 @@
   border-radius: 50%;
   font-size: $font-medium;
   border: 2px solid transparent;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .selected-range {
   border: 2px solid black;
+}
+
+@media (min-width: $break-medium) {
+  #age-range-picker {
+    width: 700px;
+  }
+  .age-range {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+  }
 }

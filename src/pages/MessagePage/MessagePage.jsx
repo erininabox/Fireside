@@ -34,11 +34,13 @@ export default function MessagePage ({ user }) {
     }, [])
 
     return (
-        <div id="messagepage-container">
-            <h1>{`Connect with ${otherUser.username}`}</h1>
-            <label htmlFor="message">Type a Message for them.</label>
-            <textarea name="message" value={message} onChange={handleMessageChange} rows="15" cols="43"></textarea>
-            <CustomButton handleCustomClick={handleMessageSubmit}>Send</CustomButton>
+        <div id="messagepage-wrapper">
+            <div id="messagepage-container">
+                <h1>{`Connect with ${otherUser.username}`}</h1>
+                <label htmlFor="message">Type a Message for them.</label>
+                <textarea name="message" value={message} onChange={handleMessageChange} rows="15" cols="43"></textarea>
+                <CustomButton handleCustomClick={handleMessageSubmit}>Send</CustomButton>
+            </div>
         </div>
     )
 }
