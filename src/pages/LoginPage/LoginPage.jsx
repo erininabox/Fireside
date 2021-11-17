@@ -38,7 +38,7 @@ export default function LoginPage(props){
             <h1>Login PAGE</h1>
             <div className="auth-body">
                 <div className="form-container" onSubmit={handleSubmit}>
-                    <form autoComplete="off" >
+                    <form autoComplete="off" className="form-elements">
                     <label>Email</label>
                     <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
                     <label>Password</label>

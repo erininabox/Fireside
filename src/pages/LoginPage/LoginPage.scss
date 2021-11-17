@@ -5,19 +5,38 @@
 #login-container {
     display: flex;
     flex-direction: column;
-}
-
-h1{
-    color: #FBF6F0;
-    font-family: "Proza Libre";
-    font-size: $font-giant;
-    line-height: 5rem;
-}
-
-#form-container {
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 100vh;
+    width: 80vw;
     margin: 0 auto;
+    padding: $padding-small;
+    h1 {
+        font-family: $font-primary;
+        font-size: $font-medium;
+        font-weight: $font-weight-medium;
+        color: black;
+        margin-bottom: 10px;
+    }
+}
+
+
+.form-container {
+  width: 100%;
+  margin-bottom: 20px;
+
+  label {
+    font-size: $font-tiny;
+    font-weight: $font-weight-heavy;
   }
-  
+
+  input {
+    margin-top: 10px;
+    width: 100%;
+    height: 36px;
+    border: 1px solid $color-border;
+    border-radius: 12px;
+    text-align: center;
+  }
+}
