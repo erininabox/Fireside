@@ -53,41 +53,30 @@ const matches = [
 
 export default function SignUpPage(props){
     
-    const [stage, setStage] = useState(0);
-    const [matchIndex, setMatchIndex] = useState(0);
-    const [error, setError ] = useState('');
-    const [state, setState]  = useState({
-        username: '',
-        email: '',
-        password: '',
-        age: null,
-        ageRanges: [],
-        description: [],
-        whatToOffer: []
-      });
+  const [stage, setStage] = useState(0);
+  const [matchIndex, setMatchIndex] = useState(0);
+  const [error, setError ] = useState('');
+  const [state, setState]  = useState({
+      username: '',
+      email: '',
+      password: '',
+      age: null,
+      ageRanges: [],
+      description: [],
+      whatToOffer: []
+    });
 
-        const history = useHistory();
+  const history = useHistory();
 
-  
-
-        async function handleSubmit(e){
-            e.preventDefault();
-
-        try {
-            await userService.signup(state);
-      // setTheUser in our app
-            props.handleSignUpOrLogin() // gets the token from localstorage and updates the user state in our app.js
-      // with the correct user object from the current token
-      // then route to the homepage
-            history.push('/') // defined above from react-router-dom
-      // after this we can go whereever
-
+  async function handleSubmit(){
+    try {
+      await userService.signup(state);
+      props.handleSignUpOrLogin()
+      history.push('/') 
     } catch(err){
       console.log(err.message)
       setError(err.message)
     }
-
-    
   }
 
   function goToNextPage(data) {
@@ -99,7 +88,7 @@ export default function SignUpPage(props){
   }
   
   function selectUser (selectedUser) {
-    console.log(selectedUser)
+    handleSubmit();
   }
 
   function skipUser () {
