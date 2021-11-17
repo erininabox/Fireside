@@ -5,6 +5,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
 import HomePage from '../HomePage/HomePage';
+import OnBoardingPage from '../OnBoardingPage/OnBoardingPage';
 import MemberPage from '../MemberPage/MemberPage';  /// debugging /////////////////////////////////////////
 
 function App() {
@@ -25,16 +26,17 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        /// debugging /////////////////////////////////////////////////
           <Route exact path="/members">
              <MemberPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
-         /// debugging ///////////////////////////////////////////////
           <Route exact path="/login">
              <LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
           <Route exact path="/signup">
              <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
+          </Route>
+          <Route exact path="/onboarding">
+             <OnBoardingPage />
           </Route>
           <Route exact path="/">
               <HomePage></HomePage>
