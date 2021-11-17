@@ -61,6 +61,7 @@ async function login(req, res) {
 async function getAll(req, res) {
   try {
     const users = await User.find({});
+    console.log(users)
     if (!users) {
       res.status(200).json({ users: [{
         username: 'Shyguy',
