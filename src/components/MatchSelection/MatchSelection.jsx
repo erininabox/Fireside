@@ -3,8 +3,9 @@ import React from 'react';
 import './MatchSelection.scss';
 import CustomButton from '../CustomButton/CustomButton';
 
-export default function MatchSelection ({ selectUser, skipUser, match }) {
+export default function MatchSelection ({ goToNextPage, skipUser, match }) {
 
+    console.log(match)
     function formatInfo (arr) {
         let output = '';
         if (arr.length > 2) {
@@ -21,11 +22,11 @@ export default function MatchSelection ({ selectUser, skipUser, match }) {
     }
 
     function handleSelectMatch () {
-        selectUser(match);
+        goToNextPage({ match: match.username });
     }
 
-    let descriptions = formatInfo(match.description);
-    let offerings = formatInfo(match.whatToOffer);
+    let descriptions = match.description ? formatInfo(match.description) : '';
+    let offerings = match.whatToOffer ? formatInfo(match.whatToOffer) : '';
 
     return (
         <div id="matchselection-container">
