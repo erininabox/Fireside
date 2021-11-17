@@ -1,0 +1,10 @@
+{"users": [
+    {
+    "username": "Shyguy",
+    "email": "email@gmail.com",
+    "password": "asdfasdf",
+    "age": 54,
+    "description": ["Caring", "Curious", "Adventurous"],
+    "whatToOffer": ["Life Advice", "Stories", "Pop Culture"]
+  }
+]}
