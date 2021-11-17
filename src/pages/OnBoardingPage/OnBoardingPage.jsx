@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import './OnBoardingPage.scss';
 import OnBoarding1 from '../../components/OnBoarding1/OnBoarding1';
 import OnBoarding2 from '../../components/OnBoarding2/OnBoarding2';
+import OnBoarding3 from '../../components/OnBoarding3/OnBoarding3';
 
 export default function OnBoardingPage (props) {
 
@@ -25,7 +26,7 @@ export default function OnBoardingPage (props) {
             {
                 page === 0 ? <OnBoarding1 handleNextClick={handleNextClick} />
                 : page === 1 ? <OnBoarding2 handleNextClick={handleNextClick} />
-                : <OnBoarding1 handleNextClick={handleNextClick} />
+                : <OnBoarding3 handleNextClick={handleNextClick} />
             }
         </div>
     )
