@@ -98,8 +98,10 @@ export default function SignUpPage(props){
   // Retrieve all the users "that match"
   async function getAllUsers () {
     try {
+      console.log('users');
       let allUsers = await userService.getAll();
-      setMatches(allUsers);
+      console.log(allUsers)
+      setMatches(allUsers.users);
     } catch (error) {
       console.log(error)
       setMatches(dummyMatches)
