@@ -13,7 +13,7 @@ export default function HomePage() {
                 </div>
                 <div class="btn-container">
                     <Link to='/Login' className="link"><button class="btn" >Login</button></Link>
-                    <Link to='/SignUp' className="link"><button class="btn" >Sign-Up</button></Link>
+                    <Link to='/onboarding' className="link"><button class="btn" >Sign-Up</button></Link>
                 </div>
             </div>
         </div>
