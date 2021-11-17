@@ -11,7 +11,7 @@ Deployed Application Below
 
 Icebox Features
 
-Implement messaging service directly in app
-Integrate notifications for those on the recieving end of messages
-Create safety measures of user checks in order to protect the elderly from being exploited
-Create an online safety demonstration
+Implement messaging service directly in app / 
+Integrate notifications for those on the recieving end of messages / 
+Create safety measures of user checks in order to protect the elderly from being exploited / 
+Create an online safety demonstration / 
