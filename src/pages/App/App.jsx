@@ -5,6 +5,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
 import HomePage from '../HomePage/HomePage';
+import OnBoardingPage from '../OnBoardingPage/OnBoardingPage';
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
              <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
+          </Route>
+          <Route exact path="/onboarding">
+             <OnBoardingPage />
           </Route>
           <Route exact path="/">
               <HomePage></HomePage>
