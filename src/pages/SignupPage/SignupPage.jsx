@@ -129,7 +129,7 @@ export default function SignUpPage(props){
           <MatchSelection 
             goToNextPage={goToNextPage} 
             skipUser={skipUser} 
-            match={ matches.users ? matches.users[matchIndex] : dummyMatches[matchIndex]} /> 
+            match={ matches.users.length ? matches.users[matchIndex] : dummyMatches} /> 
       }
     </div>
   );

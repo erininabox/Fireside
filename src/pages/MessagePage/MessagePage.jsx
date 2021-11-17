@@ -35,7 +35,7 @@ export default function MessagePage ({ user }) {
     return (
         <div id="messagepage-container">
             <h1>{`Connect with *user`}</h1>
-            <label for="message">Type a Message for them.</label>
+            <label htmlFor="message">Type a Message for them.</label>
             <textarea name="message" value={message} onChange={handleMessageChange} rows="15" cols="43"></textarea>
             <CustomButton handleCustomClick={handleMessageSubmit}>Send</CustomButton>
         </div>
