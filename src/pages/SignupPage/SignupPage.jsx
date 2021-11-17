@@ -124,6 +124,7 @@ export default function SignUpPage(props){
           stage === 2 ? <ThirdPage goToNextPage={goToNextPage}/> :
           stage === 3 ? <FourthPage goToNextPage={goToNextPage} /> :
           stage === 4 ? <FifthPage goToNextPage={goToNextPage} /> :
+          
           <MatchSelection 
             goToNextPage={goToNextPage} 
             skipUser={skipUser} 
