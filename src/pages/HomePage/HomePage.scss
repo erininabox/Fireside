@@ -23,6 +23,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 50px;
 }
 
 .btn {
@@ -65,4 +66,10 @@
 
 .link {
   text-decoration: none;
+}
+
+@media (min-width: $break-medium) {
+  .homepage-title {
+    font-size: $font-titan;
+  }
 }

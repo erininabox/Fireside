@@ -17,3 +17,10 @@
   height: 50px;
   position: absolute;
 }
+
+@media (min-width: $break-medium) {
+  #pagemarker-container {
+    max-width: $break-medium;
+    justify-content: space-evenly;
+  }
+}

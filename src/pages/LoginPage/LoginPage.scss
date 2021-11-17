@@ -42,3 +42,10 @@
     text-align: center;
   }
 }
+
+@media (min-width: $break-medium) {
+  .form-container {
+    width: 90%;
+    max-width: 800px;
+  }
+}

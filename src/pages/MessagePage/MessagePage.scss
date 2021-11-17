@@ -2,10 +2,15 @@
 @import "../../sass/dimensions";
 @import "../../sass/fonts";
 
-#messagepage-container {
+#messagepage-wrapper {
   width: 100vw;
   height: 100%;
   min-height: 100vh;
+}
+
+#messagepage-container {
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,6 +24,7 @@
     font-size: $font-medium;
     font-weight: $font-weight-heavy;
     margin-bottom: 30px;
+    padding-left: 10%;
   }
 
   label {
@@ -27,11 +33,19 @@
     font-size: $font-small;
     font-weight: $font-weight-medium;
     margin-bottom: 10px;
+    padding-left: 10%;
   }
 
   textarea {
     border-radius: 10px;
     margin-bottom: 60px;
     padding: 10px;
+  }
+}
+
+@media (min-width: $break-medium) {
+  #messagepage-container {
+    width: 500px;
+    margin: 0 auto;
   }
 }

@@ -29,6 +29,7 @@ async function signup (req, res) {
     ageRanges: req.body.ageRanges,
     match: req.body.match
   }
+
   try {
     const user = await User.create(dummy);
     const token = createJWT(user);

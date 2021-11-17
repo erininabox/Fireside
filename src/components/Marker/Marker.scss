@@ -11,3 +11,10 @@
 .marker-active {
   background-color: $color-secondary;
 }
+
+@media (min-width: $break-medium) {
+  .marker {
+    height: 10px;
+    width: 100px;
+  }
+}
