@@ -6,8 +6,9 @@ const memberSchema = new mongoose.Schema({
   email:      {type: String, required: true, lowercase: true, unique: true},
   password:   {type: String, required: true},
   age:        {type: String, required: true},
-  ageRanges:  [],
-  description:[]
+  ageRanges:  {type: [String], required: true},
+  description:{type: [String], required: true},
+  whatToOffer:{type: [String], required: true}
 }, {
   timestamps: true
 });
