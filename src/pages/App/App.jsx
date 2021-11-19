@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+
 import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -8,6 +9,7 @@ import HomePage from '../HomePage/HomePage';
 import OnBoardingPage from '../OnBoardingPage/OnBoardingPage';
 import MessagePage from '../MessagePage/MessagePage';
 import DashboardPage from '../DashboardPage/DashboardPage';
+import MatchingPage from '../MatchingPage/MatchingPage';
 
 function App() {
 
@@ -46,6 +48,9 @@ function App() {
               </Route>
               <Route exact path="/messaging">
                 <MessagePage user={user} />
+              </Route>
+              <Route exact path="/matching">
+                <MatchingPage user={user} />
               </Route>
             </Switch>
             :

@@ -3,7 +3,7 @@ import React from 'react';
 import './MatchSelection.scss';
 import CustomButton from '../CustomButton/CustomButton';
 
-export default function MatchSelection ({ goToNextPage, skipUser, match }) {
+export default function MatchSelection ({ selectUser, skipUser, match }) {
 
     function formatInfo (arr) {
         let output = '';
@@ -21,7 +21,7 @@ export default function MatchSelection ({ goToNextPage, skipUser, match }) {
     }
 
     function handleSelectMatch () {
-        goToNextPage({ match: match.username });
+        selectUser({ match: match.username });
     }
 
     let descriptions = match.description ? formatInfo(match.description) : '';
