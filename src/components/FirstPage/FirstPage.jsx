@@ -26,10 +26,11 @@ export default function FirstPage({ goToNextPage }){
         if (userInfo.username && userInfo.email && userInfo.password)
             goToNextPage(userInfo);
     }
-
+ 
     return (
-        <div id="firstpage-container">
-            <h1>Sign - Up</h1>
+        <div id="firstpage-container" style={{ backgroundImage: "url(/fireside.png)" }}>
+            <h1>FIRESIDE</h1>
+            <h2>Sign - Up</h2>
             <div className="input-wrapper">
                 <p>Name</p>
                 <input name="username" onChange={handleInputChange} value={userInfo.username} />

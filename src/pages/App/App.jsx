@@ -7,7 +7,7 @@ import userService from '../../utils/userService'
 import HomePage from '../HomePage/HomePage';
 import OnBoardingPage from '../OnBoardingPage/OnBoardingPage';
 import MessagePage from '../MessagePage/MessagePage';
-import MemberPage from '../MemberPage/MemberPage';  /// debugging /////////////////////////////////////////
+import DashboardPage from '../DashboardPage/DashboardPage';
 
 function App() {
 
@@ -27,9 +27,6 @@ function App() {
   return (
     <div className="App">
       <Switch>
-          <Route exact path="/members">
-             <MemberPage handleSignUpOrLogin={handleSignUpOrLogin}/>
-          </Route>
           <Route exact path="/login">
              <LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
@@ -44,6 +41,9 @@ function App() {
           </Route>
           { user  ?
             <Switch>
+              <Route exact path="/dashboard">
+                <DashboardPage user={user} />
+              </Route>
               <Route exact path="/messaging">
                 <MessagePage user={user} />
               </Route>

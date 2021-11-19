@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import './HomePage.scss';
-import { Link } from 'react-router-dom';
-// import CustomButton from '../CustomButton/CustomButton';
+import { useHistory } from 'react-router-dom';
+import CustomButton from '../../components/CustomButton/CustomButton';
 
 export default function HomePage(props) {
+
+    const history = useHistory();
+
+    function handleLoginClick () {
+        history.push('/login');
+    }
+
+    function handleSignupClick () {
+        history.push('/onboarding');
+    }
+
     return (
        <div>
             <div className="container" style={{ backgroundImage: "url(/fireside.png)" } }>
@@ -12,8 +23,8 @@ export default function HomePage(props) {
                     <h3 className="stupid-inspirational-quote">Making intergenerational connections</h3>
                 </div>
                 <div className="btn-container">
-                    <Link to='/Login' className="link"><button class="btn" >Login</button></Link>
-                    <Link to='/onboarding' className="link"><button class="btn" >Sign-Up</button></Link>
+                    <CustomButton handleCustomClick={handleLoginClick}>Login</CustomButton>
+                    <CustomButton handleCustomClick={handleSignupClick}>Signup</CustomButton>
                 </div>
             </div>
         </div>

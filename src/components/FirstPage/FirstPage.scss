@@ -11,9 +11,16 @@
   min-height: 100vh;
   width: 100vw;
   padding: $padding-small;
+  font-family: $font-primary;
 
   h1 {
-    font-family: $font-primary;
+    color: $color-tan-light;
+    font-size: clamp($font-giant, 7vw, $font-titan);
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+
+  h2 {
     font-size: $font-medium;
     font-weight: $font-weight-medium;
     color: black;
@@ -41,6 +48,13 @@
 }
 
 @media (min-width: $break-medium) {
+  #firstpage-container {
+    background-size: cover;
+
+    h1 {
+      margin-bottom: 100px;
+    }
+  }
   .input-wrapper {
     width: 90%;
     max-width: 800px;

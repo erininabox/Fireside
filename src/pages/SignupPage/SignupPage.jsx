@@ -47,11 +47,10 @@ const dummyMatches = [
 
 export default function SignUpPage(props){
 
-  const pageCount = 6;
+  const pageCount = 5;
   const [stage, setStage] = useState(0);
-  const [matches, setMatches] = useState([]);
-  const [matchIndex, setMatchIndex] = useState(0);
-  const [error, setError ] = useState('');
+  //const [matches, setMatches] = useState([]);
+  //const [matchIndex, setMatchIndex] = useState(0);
   const [state, setState]  = useState({
       username: '',
       email: '',
@@ -69,10 +68,9 @@ export default function SignUpPage(props){
     try {
       await userService.signup(state);
       props.handleSignUpOrLogin()
-      history.push('/messaging')
+      history.push('/dashboard')
     } catch(err){
       console.log(err.message)
-      setError(err.message)
     }
   }
 
@@ -86,38 +84,37 @@ export default function SignUpPage(props){
   }
 
   // Go through the array of matches
-  function skipUser () {
-    // if (matchIndex < dummyMatches.length - 1) {
-    if (matchIndex < matches.length - 1) {
-      setMatchIndex(prev => prev + 1);
-    } else {
-      setMatchIndex(0);
-    }
-  }
+  // function skipUser () {
+  //   // if (matchIndex < dummyMatches.length - 1) {
+  //   if (matchIndex < matches.length - 1) {
+  //     setMatchIndex(prev => prev + 1);
+  //   } else {
+  //     setMatchIndex(0);
+  //   }
+  // }
 
   // Retrieve all the users "that match"
-  async function getAllUsers () {
-    try {
-      console.log('users');
-      let allUsers = await userService.getAll();
-      console.log(allUsers)
-      setMatches(allUsers.users);
-    } catch (error) {
-      console.log(error)
-      setMatches(dummyMatches)
-    }
-  }
+  // async function getAllUsers () {
+  //   try {
+  //     console.log('users');
+  //     let allUsers = await userService.getAll();
+  //     console.log(allUsers)
+  //     setMatches(allUsers.users);
+  //   } catch (error) {
+  //     console.log(error)
+  //     setMatches(dummyMatches)
+  //   }
+  // }
 
   useEffect(() => {
     if (stage === pageCount)
       handleSubmit();
   }, [stage])
 
-  useEffect(() => {
-    getAllUsers();
-  }, [])
+  // useEffect(() => {
+  //   getAllUsers();
+  // }, [])
 
-  console.log(matches)
   return (
     <div id="form-container" >
       <PageMarker page={stage} />
@@ -126,14 +123,7 @@ export default function SignUpPage(props){
           stage === 1 ? <SecondPage goToNextPage={goToNextPage} /> :
           stage === 2 ? <ThirdPage goToNextPage={goToNextPage}/> :
           stage === 3 ? <FourthPage goToNextPage={goToNextPage} /> :
-          stage === 4 ? <FifthPage goToNextPage={goToNextPage} /> :
-
-          <MatchSelection
-            goToNextPage={goToNextPage}
-            skipUser={skipUser}
-            // match={ dummyMatches[matchIndex]}
-            match={ matches.length != 0 ? matches[matchIndex] : dummyMatches[matchIndex]}
-            />
+          <FifthPage goToNextPage={goToNextPage} />
       }
     </div>
   );
