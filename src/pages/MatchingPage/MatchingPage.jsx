@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useHistory, useLocation } from 'react-router-dom';
 
 import './MatchingPage.scss';
 import userService from "../../utils/userService";
 import MatchSelection from "../../components/MatchSelection/MatchSelection";
-
-const dummy = {
-  username: "-",
-  age: "-",
-  description: [],
-  whatToOffer: []
-};
+import NoMatches from "../../components/NoMatches/NoMatches";
 
 export default function MatchingPage ({ user }) {
 
+  const location = useLocation();
+
   const [matchIndex, setMatchIndex] = useState(0);
-  const [matchError, setMatchError] = useState('');
-  const [matches, setMatches] = useState([]);
+  const [matches, setMatches] = useState(location.state.matches);
+
+  const history = useHistory();
 
   // Go through the array of matches
   function skipUser () {
@@ -27,38 +25,29 @@ export default function MatchingPage ({ user }) {
   }
 
   // Add the selected match to the user data
-  function selectUser (matchName) {
+  async function selectUser ({ match }) {
     let updatedUser = { 
       ...user,
-      match: matchName
+      match
     }
-    console.log('Updated user: ', updatedUser);
-  }
 
-  // Retrieve all the users "that match"
-  async function getAllUsers () {
     try {
-      let data = await userService.getAll();
-      console.log(data.users)
-      setMatches(data.users);
-    } catch (error) {
-      setMatchError(error);
+      await userService.update(updatedUser);
+      history.push('/dashboard');
+    } catch (err) {
+      console.log(err);
     }
   }
-
-  useEffect(() => {
-    getAllUsers();
-  }, [])
 
     return (
       <div>
         {
-          matchError ? {matchError} :
+          matches ?
           <MatchSelection 
             selectUser={selectUser} 
             skipUser={skipUser} 
-            match={ matches ? matches[matchIndex] : dummy }
-          />
+            match={ matches[matchIndex]}
+          /> : <NoMatches />
         }
       </div>
         

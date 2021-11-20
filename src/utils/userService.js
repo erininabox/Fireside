@@ -26,6 +26,21 @@ function signup(user) {
   //.then((token) => token.token);
 }
 
+// Pass the whole user object with updated properties
+function update(user) {
+  return fetch(BASE_URL + user.username, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    },
+    body: JSON.stringify(user)
+  }).then (res => {
+    if (res.ok) return res.json();
+    throw new Error('Unable to update user!');
+  }).then (({token}) => tokenService.setToken(token));
+}
+
 function getUser() {
   return tokenService.getUserFromToken();
 }
@@ -73,5 +88,6 @@ export default {
   login,
   getUser,
   getOne,
-  getAll
+  getAll,
+  update
 };

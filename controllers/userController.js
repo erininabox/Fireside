@@ -6,7 +6,8 @@ module.exports = {
   signup,
   login,
   getAll,
-  getOne
+  getOne,
+  update
 }
 
 function createJWT(user) {
@@ -18,7 +19,6 @@ function createJWT(user) {
 }
 
 async function signup (req, res) {
-  console.log("--------->>>>>>>>")
   let dummy = {
     username: req.body.username,
     email: req.body.email,
@@ -34,6 +34,26 @@ async function signup (req, res) {
     const user = await User.create(dummy);
     const token = createJWT(user);
     res.json({ token });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+async function update (req, res) {
+  try {
+    const user = await User.findOne({ username: req.params.id })
+
+    user.username = req.body.username;
+    user.email = req.body.email;
+    user.age = req.body.age;
+    user.description = req.body.description;
+    user.whatToOffer = req.body.whatToOffer;
+    user.ageRanges = req.body.ageRanges;
+    user.match = req.body.match;
+
+    user.save();
+    const token = createJWT(user);
+    res.status(200).json({ token });
   } catch (err) {
     res.status(400).json(err);
   }
