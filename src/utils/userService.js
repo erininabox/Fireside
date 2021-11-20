@@ -84,7 +84,7 @@ function getAll() {
 };
 
 
-export default {
+const userService = {
   signup, 
   logout,
   login,
@@ -93,3 +93,5 @@ export default {
   getAll,
   update
 };
+
+export default userService;

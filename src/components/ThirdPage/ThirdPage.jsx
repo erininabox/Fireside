@@ -34,7 +34,6 @@ export default function ThirdPage({ goToNextPage }){
             high: temp[2]
         });
         setAgeRanges(temp2);
-        console.log(ageRanges)
     }
 
     function handleRemoveRangeClick (e) {

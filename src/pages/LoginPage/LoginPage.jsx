@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './LoginPage.scss';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
 import { useHistory } from "react-router-dom";
+
+import './LoginPage.scss';
+import userService from '../../utils/userService';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
 
@@ -24,7 +24,7 @@ export default function LoginPage(props){
           // The promise returned by the signUp service method 
           // will resolve to the user object included in the
           // payload of the JSON Web Token (JWT)
-          const user = await userService.login(credentials);
+          await userService.login(credentials);
           props.handleSignUpOrLogin();
           history.push("/dashboard");
         } catch {
@@ -38,9 +38,9 @@ export default function LoginPage(props){
             <div className="form-container">
                 <form autoComplete="off" className="form-elements">
                     <label>Email</label>
-                    <input type="text" name="email" value={credentials.email} onChange={handleChange} type="email" required />
+                    <input name="email" value={credentials.email} onChange={handleChange} type="email" autoComplete="on" required />
                     <label>Password</label>
-                    <input type="password" name="password" value={credentials.password} onChange={handleChange} type="password" required />
+                    <input name="password" value={credentials.password} onChange={handleChange} type="password" autoComplete="on" required />
                 </form>
             </div>
             <CustomButton handleCustomClick={handleSubmit}>Login</CustomButton>

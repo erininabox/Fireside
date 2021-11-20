@@ -49,9 +49,10 @@ export default function DashboardPage ({ handleLogout }) {
     return filtered;
   }
 
+  // Pull all users whenever dashboard renders
   useEffect(() => {
     getAllUsers();
-  }, [])
+  })
 
   return (
       <div id="dashboardpage-container">
