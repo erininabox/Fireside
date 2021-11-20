@@ -6,12 +6,13 @@ import userService from "../../utils/userService";
 import MatchSelection from "../../components/MatchSelection/MatchSelection";
 import NoMatches from "../../components/NoMatches/NoMatches";
 
-export default function MatchingPage ({ user }) {
+export default function MatchingPage ( props ) {
 
   const location = useLocation();
 
   const [matchIndex, setMatchIndex] = useState(0);
   const [matches, setMatches] = useState(location.state.matches);
+  const [user, setUser] = useState(userService.getUser());
 
   const history = useHistory();
 

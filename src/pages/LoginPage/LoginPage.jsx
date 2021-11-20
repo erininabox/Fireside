@@ -26,7 +26,7 @@ export default function LoginPage(props){
           // payload of the JSON Web Token (JWT)
           const user = await userService.login(credentials);
           props.handleSignUpOrLogin();
-          history.push("/messaging");
+          history.push("/dashboard");
         } catch {
           setError('Log In Failed - Try Again');
         }

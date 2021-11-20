@@ -24,7 +24,6 @@
     font-size: $font-medium;
     font-weight: $font-weight-heavy;
     margin-bottom: 30px;
-    padding-left: 10%;
   }
 
   label {
@@ -33,13 +32,13 @@
     font-size: $font-small;
     font-weight: $font-weight-medium;
     margin-bottom: 10px;
-    padding-left: 10%;
   }
 
   textarea {
     border-radius: 10px;
     margin-bottom: 60px;
     padding: 10px;
+    width: 100%;
   }
 }
 
