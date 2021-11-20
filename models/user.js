@@ -6,7 +6,7 @@ const SALT_ROUNDS = 6;
 const rangeSchema = new mongoose.Schema({
   range: String,
   low: Number,
-  hight: Number
+  high: Number
 })
 
 const userSchema = new mongoose.Schema({

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory, useLocation } from 'react-router-dom';
 
 import './MatchingPage.scss';
@@ -11,9 +11,9 @@ export default function MatchingPage ( props ) {
   const location = useLocation();
 
   const [matchIndex, setMatchIndex] = useState(0);
-  const [matches, setMatches] = useState(location.state.matches);
-  const [user, setUser] = useState(userService.getUser());
-
+  
+  const user = userService.getUser();
+  const matches = location.state.matches;
   const history = useHistory();
 
   // Go through the array of matches

@@ -24,33 +24,36 @@ export default function ThirdPage({ goToNextPage }){
     }
 
     function handleAddRangeClick (e) {
-        let temp = ageRange.filter(range => {
+        let [temp] = ageRange.filter(range => {
             return range[0] === e.target.innerText;
         })
         let temp2 = [...ageRanges];
-        temp2.push(temp);
+        temp2.push({ 
+            range: temp[0],
+            low: temp[1],
+            high: temp[2]
+        });
         setAgeRanges(temp2);
+        console.log(ageRanges)
     }
 
     function handleRemoveRangeClick (e) {
         let temp;
 
-        temp = ageRanges.filter(range => {
-            return !(range[0][0] === e.target.innerText);
+        temp = ageRanges.filter(ageR => {
+            return !(ageR.range === e.target.innerText);
         })
 
         setAgeRanges([...temp]);
     }
 
     function checkIfSelected(range) {
-        let allRanges = JSON.stringify(ageRanges);
-        let thisRange = JSON.stringify(range);
-        let index = allRanges.indexOf(thisRange);
-        
-        if (index !== -1) {
-            return true;
-        }
-        return false;
+        let isChecked = false;
+        ageRanges.forEach(ageR => {
+            if (ageR.range === range)
+                isChecked = true;
+        })
+        return isChecked;
     }
 
     return (
@@ -61,7 +64,7 @@ export default function ThirdPage({ goToNextPage }){
                 {
                     ageRange.map((ageR, index) => {
                         return (
-                            checkIfSelected(ageR) ? <div key={index} className="age-range selected-range" onClick={handleRemoveRangeClick}>{ageR[0]}</div>
+                            checkIfSelected(ageR[0]) ? <div key={index} className="age-range selected-range" onClick={handleRemoveRangeClick}>{ageR[0]}</div>
                                 : <div key={index} className="age-range" onClick={handleAddRangeClick}>{ageR[0]}</div>
                         )
                     })
