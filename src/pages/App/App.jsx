@@ -44,7 +44,7 @@ function App() {
           { user  ?
             <Switch>
               <Route exact path="/dashboard">
-                <DashboardPage />
+                <DashboardPage handleLogout={handleLogout} />
               </Route>
               <Route exact path="/messaging">
                 <MessagePage />

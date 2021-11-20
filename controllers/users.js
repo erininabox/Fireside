@@ -26,7 +26,11 @@ async function signup (req, res) {
     password: req.body.password,
     description: req.body.description,
     whatToOffer: req.body.whatToOffer,
-    ageRanges: req.body.ageRanges,
+    ageRanges: {
+      range: req.body.ageRanges.range,
+      low: req.body.ageRanges.low,
+      high: req.body.ageRanges.high
+    },
     match: req.body.match
   }
 
@@ -49,6 +53,9 @@ async function update (req, res) {
     user.description = req.body.description;
     user.whatToOffer = req.body.whatToOffer;
     user.ageRanges = req.body.ageRanges;
+    user.ageRanges.range = req.body.ageRanges.range;
+    user.ageRanges.low = req.body.ageRanges.low;
+    user.ageRanges.high = req.body.ageRanges.high;
     user.match = req.body.match;
 
     user.save();

@@ -49,8 +49,6 @@ export default function SignUpPage(props){
 
   const pageCount = 5;
   const [stage, setStage] = useState(0);
-  //const [matches, setMatches] = useState([]);
-  //const [matchIndex, setMatchIndex] = useState(0);
   const [state, setState]  = useState({
       username: '',
       email: '',
@@ -83,37 +81,10 @@ export default function SignUpPage(props){
     setStage(prev => prev + 1);
   }
 
-  // Go through the array of matches
-  // function skipUser () {
-  //   // if (matchIndex < dummyMatches.length - 1) {
-  //   if (matchIndex < matches.length - 1) {
-  //     setMatchIndex(prev => prev + 1);
-  //   } else {
-  //     setMatchIndex(0);
-  //   }
-  // }
-
-  // Retrieve all the users "that match"
-  // async function getAllUsers () {
-  //   try {
-  //     console.log('users');
-  //     let allUsers = await userService.getAll();
-  //     console.log(allUsers)
-  //     setMatches(allUsers.users);
-  //   } catch (error) {
-  //     console.log(error)
-  //     setMatches(dummyMatches)
-  //   }
-  // }
-
   useEffect(() => {
     if (stage === pageCount)
       handleSubmit();
   }, [stage])
-
-  // useEffect(() => {
-  //   getAllUsers();
-  // }, [])
 
   return (
     <div id="form-container" >

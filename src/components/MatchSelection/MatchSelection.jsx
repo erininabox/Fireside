@@ -35,7 +35,7 @@ export default function MatchSelection ({ selectUser, skipUser, match }) {
                 <div className="match-info">
                     <div>{match.age} years old</div>
                     <div>{descriptions}</div>
-                    <div>{`Interested in ${offerings}`}</div>
+                    <div>{ match.whatToOffer.length ? `Interested in ${offerings}`: ''}</div>
                 </div>
             </div>
             <p>{`Would you like to chat with ${match.username}?`}</p>
