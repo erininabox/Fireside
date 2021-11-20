@@ -5,13 +5,16 @@ const usersCtrl = require('../../controllers/userController');
 /*---------- Public Routes ----------*/
 router.post('/signup', usersCtrl.signup);
 router.post('/login', usersCtrl.login);
-router.put('/:id', usersCtrl.update);
-router.get('/', usersCtrl.getAll);
-router.get('/:id', usersCtrl.getOne);
 
 /*---------- Protected Routes ----------*/
+router.put('/:id', isAuthorized, usersCtrl.update);
+router.get('/', isAuthorized, usersCtrl.getAll);
+router.get('/:id', isAuthorized, usersCtrl.getOne);
 
-
-
+function isAuthorized(req, res, next) {
+    if (req.user) 
+        return next();
+    res.redirect('/api/users/');
+}
 
 module.exports = router;

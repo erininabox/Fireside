@@ -67,6 +67,7 @@ function getOne(username) {
   return fetch(BASE_URL + username, {
     method: 'GET',
     headers: {
+      'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     }
   }).then(res => res.json());
@@ -76,6 +77,7 @@ function getAll() {
   return fetch(BASE_URL, {
     method: 'GET',
     headers: {
+      'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     }
   }).then(res => res.json());

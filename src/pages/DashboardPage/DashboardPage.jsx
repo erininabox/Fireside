@@ -12,10 +12,19 @@ export default function DashboardPage (props) {
   const history = useHistory();
 
   function handleGetMatch () {
-      history.push({
-        pathname: '/matching',
-        state: { matches }
+    history.push({
+      pathname: '/matching',
+      state: { matches }
     });
+  }
+
+  function handleGoToMessaging () {
+    history.push('/messaging');
+  }
+
+  function handleLogout () {
+    userService.logout();
+    history.push('/');
   }
 
     // Retrieve all the users "that match"
@@ -37,6 +46,8 @@ export default function DashboardPage (props) {
           <p>{user.username} was successfully created in the database</p>
           <p>{user.username} is matched with {user.match}</p>
           <button onClick={handleGetMatch}>Get Match</button>
+          <button onClick={handleGoToMessaging}>Messaging</button>
+          <button onClick={handleLogout}>Logout</button>
       </div>
   )
 }

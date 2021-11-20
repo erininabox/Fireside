@@ -44,17 +44,17 @@ function App() {
           { user  ?
             <Switch>
               <Route exact path="/dashboard">
-                <DashboardPage user={user} />
+                <DashboardPage />
               </Route>
               <Route exact path="/messaging">
-                <MessagePage user={user} />
+                <MessagePage />
               </Route>
               <Route exact path="/matching">
-                <MatchingPage user={user} />
+                <MatchingPage />
               </Route>
             </Switch>
             :
-            <Redirect to='/login'/>
+            <Redirect to='/'/>
           }
           
 

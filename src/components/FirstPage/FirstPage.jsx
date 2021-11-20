@@ -30,17 +30,17 @@ export default function FirstPage({ goToNextPage }){
     return (
         <div id="firstpage-container" style={{ backgroundImage: "url(/fireside.png)" }}>
             <h1>FIRESIDE</h1>
-            <h2>Sign - Up</h2>
+            <h2>Signup</h2>
             <div className="input-wrapper">
-                <p>Name</p>
+                <label htmlFor="username">Name</label>
                 <input name="username" onChange={handleInputChange} value={userInfo.username} />
             </div>
             <div className="input-wrapper">
-                <p>Email</p>
+                <label htmlFor="email">Email</label>
                 <input name="email" onChange={handleInputChange} value={userInfo.email}  />
             </div>
             <div className="input-wrapper">
-                <p>Password</p>
+                <label htmlFor="password">Password</label>
                 <input name="password" onChange={handleInputChange} value={userInfo.password}  />
             </div>
             <CustomButton handleCustomClick={handleCustomClick}>Next</CustomButton>
