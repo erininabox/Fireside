@@ -15,15 +15,19 @@ We chose to use React instead of React Native for this application due to the (l
 ## Set up
 
 If you want to check out the demo, please follow the link in the description. If you'd like to check out the code or run it locally, you need to have Node installed. Once downloaded, run:
+    ```
     npm install
+    ```
 This will install the necessary dependencies. Then run:
+    ```
     npm run start
+    ```
 This will get the app up and running on an available port and should launch in your default browser.
 
 ## Icebox Features
 
-Implement messaging service directly in app / 
-Integrate notifications for those on the recieving end of messages / 
-Create safety measures of user checks in order to protect the elderly from being exploited / 
-Create an online safety demonstration 
-Implement external authorization service (OAuth, Auth0, etc.)
+[ ] Implement messaging service directly in app
+[ ] Integrate notifications for those on the recieving end of messages
+[ ] Create safety measures of user checks in order to protect the elderly from being exploited
+[ ] Create an online safety demonstration 
+[ ] Implement external authorization service (OAuth, Auth0, etc.)
